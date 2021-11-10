@@ -1,22 +1,26 @@
 import React from 'react';
-import data from '../data';
+import Header from './Header';
+import Main from './Main';
+import Sidebar from './Sidebar';
+import '../style/index.css';
 
-class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      value: '',
-    };
-  }
-
+export default class App extends React.Component {
+  state = {
+    navClosed: false,
+  };
+  changeNavbar = () => {
+    this.setState({ navClosed: !this.state.navClosed });
+  };
   render() {
-    console.log(data);
     return (
-      <>
-        <h1>This is App component</h1>
-      </>
+      <div className={`container ${this.state.navClosed && 'nav-closed'}`}>
+        <Header changeNavbar={this.changeNavbar} />
+        <div className="main">
+          {/* <h2>This is App component</h2> */}
+          <Sidebar />
+          <Main />
+        </div>
+      </div>
     );
   }
 }
-
-export default App;

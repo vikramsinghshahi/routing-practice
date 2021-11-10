@@ -1,14 +1,15 @@
-import React from 'react';
+import { StrictMode } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import ReactDOM from 'react-dom';
-import App from './components/App';
-// import Header from './components/Header';
-// import Main from './components/Main';
-// import Footer from './components/Footer';
-import { BrowserRouter, Route, Router } from 'react-router-dom';
 
+import App from './components/App';
+
+const rootElement = document.getElementById('root');
 ReactDOM.render(
-  <BrowserRouter>
-    <Route path="/user/:username" component={App} />
-  </BrowserRouter>,
-  document.getElementById('root')
+  <StrictMode>
+    <Router>
+      <App />
+    </Router>
+  </StrictMode>,
+  rootElement
 );

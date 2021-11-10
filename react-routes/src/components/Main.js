@@ -1,20 +1,28 @@
-import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Article from './Article';
+import Articles from './Articles';
+import Books from './Books';
+import Help from './Help';
+import Home from './Home';
+import NotFound from './NotFound';
+import People from './People';
 
-class Main extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      value: '',
-    };
-  }
+function Main() {
+  return (
+    <div className="page-content">
+      <Routes>
+        <Route path="/" element={<Home />} exact />
+        <Route path="/help" element={<Help />} />
+        <Route path="/articles" element={<Articles />} exact />
 
-  render() {
-    return (
-      <>
-        <h1>This is Main</h1>
-      </>
-    );
-  }
+        <Route path="/articles/:slug" element={<Article />} />
+
+        <Route path="/people" element={<People />} />
+        <Route path="/books" element={<Books />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </div>
+  );
 }
 
 export default Main;
